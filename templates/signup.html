@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+ {% block style %}
+.errorlist{
+  list-style-type: none;
+  margin-bottom: 0px;
+  padding-left:0px;
+  margin-top: 3px;
+
+
+}
+.errorlist li{
+  color: red;
+}
+{% endblock style %} 
+
+{% block content %}
+<section class="vh-100" style="background-color:gray;">
+  <div class="container  py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100" >
+      <div class="col-md-7 ">
+        <div class="card shadow-2-strong card-registration mt-5" style="border-radius: 15px; ">
+          <div class="card-body p-4 p-md-5"  >
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center text-secondary">Registration Form</h3>
+            <form method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    {{form.first_name}} 
+                    {{form.first_name.label_tag}}
+                    {{form.first_name.errors }}
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    {{form.last_name}}
+                    {{form.last_name.label_tag}}
+                    {{form.last_name.errors}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div
+                    data-mdb-input-init
+                    class="form-outline datepicker w-100">
+                    {{form.email}} 
+                    {{form.email.label_tag}}
+                    {{form.email.errors}}
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div
+                    data-mdb-input-init
+                    class="form-outline datepicker w-100">
+                    {{form.username}} 
+                    {{form.username.label_tag}}
+                    {{form.username.errors}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div
+                    data-mdb-input-init
+                    class="form-outline datepicker w-100">
+                    {{form.password1}} 
+                    {{form.password1.label_tag}}
+                    {{form.password1.errors}}
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div
+                    data-mdb-input-init
+                    class="form-outline datepicker w-100">
+                    {{form.password2}}
+                    {{form.password2.label_tag}}
+                    {{form.password2.errors}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-2 d-flex justify-content-center">                  
+                  <input class="btn btn-secondary btn-lg ps-5 pe-5" type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}
+

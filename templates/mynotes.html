@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="height:80vh;">
+    <div class="row mt-5 d-flex justify-content-center">
+        <div class="col-md-6">
+            <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 d-flex justify-content-center">
+                <a href="{% url "add_note" %}"><button class="btn btn-danger">ALl Notes</button></a>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        {% if data %}
+       
+        {% for i in data %} 
+        <div class="col-md-4">
+            <div class="card ">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.note_title}}</h5>
+                  <p class="card-text">{{i.note_description}}</p>
+                  <a href="/edit_notes/{{i.id}}" class="btn btn-primary" data-mdb-ripple-init>Edit</a>
+                  <a href="/delete_notes/{{i.id}}" class="btn btn-primary" data-mdb-ripple-init>Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h1 class="text-danger text-center">You did not create any note plss create your notes</h1>
+    {% endif %}
+</div>
+{% endblock content %}
